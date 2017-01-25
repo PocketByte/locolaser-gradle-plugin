@@ -1,0 +1,13 @@
+apply plugin: 'groovy'
+
+version = '1.0.0'
+group = 'ru.pocketbyte.locolaser'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+}
