@@ -7,7 +7,7 @@ import org.gradle.api.tasks.JavaExec
 class LocoLaserPlugin implements Plugin<Project> {
     void apply(Project project) {
         project.repositories {
-            maven { url  "http://pocketbyte.bintray.com/maven" }
+            maven { url  "https://dl.bintray.com/pocketbyte/maven/" }
         }
 
         project.configurations {
