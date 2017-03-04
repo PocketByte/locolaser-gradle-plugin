@@ -36,7 +36,7 @@ dependencies {
 Plugin add 3 tasks into **`localization`** group:
 - **`localize`** - Run LocoLaser with default parameters;
 - **`localizeForce`** - Run LocoLaser with force;
-- **`localizeForce`** - Run LocoLaser with force and conflict strategy = export_new_local.
+- **`localizeExportNew`** - Run LocoLaser with force and conflict strategy = export_new_platform.
 
 **Note:** Before start one of this tasks make sure that you place configuration file in the root of the module folder. About configuration file format you can read in https://github.com/PocketByte/LocoLaser/blob/master/README.md
 ##### Extension

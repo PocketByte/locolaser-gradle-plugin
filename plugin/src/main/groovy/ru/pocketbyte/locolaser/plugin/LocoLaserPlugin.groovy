@@ -34,12 +34,12 @@ class LocoLaserPlugin implements Plugin<Project> {
                 args = [project.localize.config, "--force"]
             }
 
-            project.task('localizeWithExport', type: JavaExec) {
+            project.task('localizeExportNew', type: JavaExec) {
                 group = 'localization'
-                description = 'Run LocoLaser with force and conflict strategy = export_new_local'
+                description = 'Run LocoLaser with force and conflict strategy = export_new_platform'
                 classpath project.configurations.localize
                 main = "ru.pocketbyte.locolaser.Main"
-                args = [project.localize.config, "--force", "--export"]
+                args = [project.localize.config, "--force", "-cs", "export_new_platform"]
             }
         }
     }
