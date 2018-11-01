@@ -12,8 +12,8 @@ buildscript {
 apply plugin: 'groovy'
 apply plugin: "com.gradle.plugin-publish"
 
-version = '1.0.1'
-group = 'ru.pocketbyte.locolaser'
+version = plugin_version
+group = plugin_group
 
 repositories {
     mavenCentral()
