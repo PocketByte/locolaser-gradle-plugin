@@ -19,6 +19,7 @@ class LocoLaserPlugin implements Plugin<Project> {
         project.afterEvaluate {
 
             project.task('localize', type: JavaExec) {
+                outputs.upToDateWhen { false }
                 group = 'localization'
                 description = 'Run LocoLaser'
                 classpath project.configurations.localize
@@ -27,6 +28,7 @@ class LocoLaserPlugin implements Plugin<Project> {
             }
 
             project.task('localizeForce', type: JavaExec) {
+                outputs.upToDateWhen { false }
                 group = 'localization'
                 description = 'Run LocoLaser with force'
                 classpath project.configurations.localize
@@ -35,6 +37,7 @@ class LocoLaserPlugin implements Plugin<Project> {
             }
 
             project.task('localizeExportNew', type: JavaExec) {
+                outputs.upToDateWhen { false }
                 group = 'localization'
                 description = 'Run LocoLaser with force and conflict strategy = export_new_platform'
                 classpath project.configurations.localize
