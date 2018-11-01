@@ -10,6 +10,6 @@ dependencies {
 }
 
 ext {
-    plugin_version = '1.0.1'
+    plugin_version = '1.0.2'
     plugin_group = 'ru.pocketbyte.locolaser'
 }
