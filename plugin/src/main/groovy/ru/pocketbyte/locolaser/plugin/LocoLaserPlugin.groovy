@@ -16,34 +16,31 @@ class LocoLaserPlugin implements Plugin<Project> {
 
         project.extensions.create("localize", LocalizeExtension)
 
-        project.afterEvaluate {
+        project.task('localize', type: JavaExec) {
+            outputs.upToDateWhen { false }
+            group = 'localization'
+            description = 'Run LocoLaser'
+            classpath project.configurations.localize
+            main = "ru.pocketbyte.locolaser.Main"
+            args = [project.localize.config]
+        }
 
-            project.task('localize', type: JavaExec) {
-                outputs.upToDateWhen { false }
-                group = 'localization'
-                description = 'Run LocoLaser'
-                classpath project.configurations.localize
-                main = "ru.pocketbyte.locolaser.Main"
-                args = [project.localize.config]
-            }
+        project.task('localizeForce', type: JavaExec) {
+            outputs.upToDateWhen { false }
+            group = 'localization'
+            description = 'Run LocoLaser with force'
+            classpath project.configurations.localize
+            main = "ru.pocketbyte.locolaser.Main"
+            args = [project.localize.config, "--force"]
+        }
 
-            project.task('localizeForce', type: JavaExec) {
-                outputs.upToDateWhen { false }
-                group = 'localization'
-                description = 'Run LocoLaser with force'
-                classpath project.configurations.localize
-                main = "ru.pocketbyte.locolaser.Main"
-                args = [project.localize.config, "--force"]
-            }
-
-            project.task('localizeExportNew', type: JavaExec) {
-                outputs.upToDateWhen { false }
-                group = 'localization'
-                description = 'Run LocoLaser with force and conflict strategy = export_new_platform'
-                classpath project.configurations.localize
-                main = "ru.pocketbyte.locolaser.Main"
-                args = [project.localize.config, "--force", "-cs", "export_new_platform"]
-            }
+        project.task('localizeExportNew', type: JavaExec) {
+            outputs.upToDateWhen { false }
+            group = 'localization'
+            description = 'Run LocoLaser with force and conflict strategy = export_new_platform'
+            classpath project.configurations.localize
+            main = "ru.pocketbyte.locolaser.Main"
+            args = [project.localize.config, "--force", "-cs", "export_new_platform"]
         }
     }
 }
