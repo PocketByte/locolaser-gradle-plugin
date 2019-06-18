@@ -12,7 +12,7 @@ buildscript {
     }
   }
   dependencies {
-    classpath "gradle.plugin.ru.pocketbyte.locolaser:plugin:1.0.0"
+    classpath "gradle.plugin.ru.pocketbyte.locolaser:plugin:1.0.4"
   }
 }
 
@@ -21,15 +21,15 @@ apply plugin: "ru.pocketbyte.locolaser"
 Build script snippet for new, incubating, plugin mechanism introduced in Gradle 2.1:
 ```gradle
 plugins {
-  id "ru.pocketbyte.locolaser" version "1.0.0"
+  id "ru.pocketbyte.locolaser" version "1.0.4"
 }
 ```
 ##### 2. Add dependency
 Choose which type of artifact you will use and add it as **`localize`** dependency:
 ```gradle
 dependencies {
-    // Artifact for work with Google Sheets
-    localize 'ru.pocketbyte.locolaser:locolaser-mobile-googlesheet:1.0.+'
+    // Artifact for work with Mobile Platforms
+    localize "ru.pocketbyte.locolaser:platform-mobile:1.2.8"
 }
 ```
 ##### Tasks
