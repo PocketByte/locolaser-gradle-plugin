@@ -5,6 +5,21 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.JavaExec
 
 class LocoLaserPlugin implements Plugin<Project> {
+
+    class ConfigPathWrapper {
+
+        private LocalizeExtension extension
+
+        ConfigPathWrapper(LocalizeExtension extension) {
+            this.extension = extension
+        }
+
+        @Override
+        String toString() {
+            return extension.config
+        }
+    }
+
     void apply(Project project) {
         project.repositories {
             maven { url  "https://dl.bintray.com/pocketbyte/maven/" }
@@ -14,7 +29,8 @@ class LocoLaserPlugin implements Plugin<Project> {
             localize
         }
 
-        project.extensions.create("localize", LocalizeExtension)
+        def extension = project.extensions.create("localize", LocalizeExtension)
+        def configPath = new ConfigPathWrapper(extension)
 
         project.task('localize', type: JavaExec) {
             outputs.upToDateWhen { false }
@@ -22,7 +38,7 @@ class LocoLaserPlugin implements Plugin<Project> {
             description = 'Run LocoLaser'
             classpath project.configurations.localize
             main = "ru.pocketbyte.locolaser.Main"
-            args = [project.localize.config]
+            args = [configPath]
         }
 
         project.task('localizeForce', type: JavaExec) {
@@ -31,7 +47,7 @@ class LocoLaserPlugin implements Plugin<Project> {
             description = 'Run LocoLaser with force'
             classpath project.configurations.localize
             main = "ru.pocketbyte.locolaser.Main"
-            args = [project.localize.config, "--force"]
+            args = [configPath, "--force"]
         }
 
         project.task('localizeExportNew', type: JavaExec) {
@@ -40,7 +56,7 @@ class LocoLaserPlugin implements Plugin<Project> {
             description = 'Run LocoLaser with force and conflict strategy = export_new_platform'
             classpath project.configurations.localize
             main = "ru.pocketbyte.locolaser.Main"
-            args = [project.localize.config, "--force", "-cs", "export_new_platform"]
+            args = [configPath, "--force", "-cs", "export_new_platform"]
         }
     }
 }
